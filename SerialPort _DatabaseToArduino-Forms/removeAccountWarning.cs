@@ -48,6 +48,10 @@ namespace SerialPort__DatabaseToArduino_Forms
                 DataSet DS = new DataSet();
                 adapter.Fill(DS);
                 accountInfo.Text = DS.Tables[0].Rows[0][0].ToString() + " " + DS.Tables[0].Rows[0][1].ToString() + " " + DS.Tables[0].Rows[0][2].ToString();
+                string firstName = DS.Tables[0].Rows[0][0].ToString();
+                string middleName = DS.Tables[0].Rows[0][1].ToString();
+                string lastName = DS.Tables[0].Rows[0][2].ToString();
+                Initials.Text = firstName[0].ToString() + middleName[0].ToString() + lastName[0].ToString();
             }
             catch (Exception ex)
             {
