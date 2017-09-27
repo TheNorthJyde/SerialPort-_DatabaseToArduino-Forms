@@ -36,6 +36,7 @@
             // id
             // 
             this.id.Location = new System.Drawing.Point(12, 29);
+            this.id.MaxLength = 14;
             this.id.Name = "id";
             this.id.Size = new System.Drawing.Size(100, 22);
             this.id.TabIndex = 0;
