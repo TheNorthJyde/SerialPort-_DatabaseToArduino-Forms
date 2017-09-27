@@ -15,6 +15,8 @@ namespace SerialPort__DatabaseToArduino_Forms
     public partial class removeAccount : Form
     {
         SerialPort myserialPort;
+
+        database database = new database();
         private removeAccount()
         {
             InitializeComponent();
@@ -33,15 +35,26 @@ namespace SerialPort__DatabaseToArduino_Forms
         private void MySerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             id.Text = myserialPort.ReadLine();
+            if (id.TextLength == 11)
+                id.Text += " \r";
         }
 
         private void removeAccount_button_Click(object sender, EventArgs e)
         {
-            removeID.TextToBring = id.Text;
-            removeAccountWarning warning = new removeAccountWarning();
-            warning.StartPosition = FormStartPosition.CenterParent;
-            warning.ShowDialog();
-            this.Close();
+            if(database.checkID(id.Text))
+            {
+                removeID.TextToBring = id.Text;
+                removeAccountWarning warning = new removeAccountWarning();
+                warning.StartPosition = FormStartPosition.CenterParent;
+                warning.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("This ID: " + id.Text + " is never used");
+                id.Text = "";
+            }
+            
         }
 
         

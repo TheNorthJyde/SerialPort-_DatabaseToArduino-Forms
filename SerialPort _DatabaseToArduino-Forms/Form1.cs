@@ -31,6 +31,7 @@ namespace SerialPort__DatabaseToArduino_Forms
             clear.Enabled = false;
 
             MessageBox.Show("remeber to save and upload new code");
+            
         }
 
         private void serialPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)

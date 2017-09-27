@@ -19,6 +19,9 @@ namespace SerialPort__DatabaseToArduino_Forms
         //This handles the connection and the query
         MySqlCommand cmd;
 
+        //database
+        database database = new database();
+
         
         MySqlDataAdapter adapter;
 
@@ -31,24 +34,35 @@ namespace SerialPort__DatabaseToArduino_Forms
             InitializeComponent();
 
             id = removeID.TextToBring;
-
+            
             text();
-        }
+        }     
+
 
         void text()
         {
-            try
+            if(database.checkID(id))
             {
-                string sql = "SELECT `First_name`, `Middle_name`, `Last_name` FROM `accounts` WHERE ID ='" + id + "'";
-                adapter = new MySqlDataAdapter(sql, con);
-                DataSet DS = new DataSet();
-                adapter.Fill(DS);
-                accountInfo.Text = DS.Tables[0].Rows[0][0].ToString() + ", " + DS.Tables[0].Rows[0][1].ToString() + ", " + DS.Tables[0].Rows[0][2].ToString();
+                try
+                {
+                    string sql = "SELECT `First_name`, `Middle_name`, `Last_name` FROM `accounts` WHERE ID ='" + id + "'";
+                    adapter = new MySqlDataAdapter(sql, con);
+                    DataSet DS = new DataSet();
+                    adapter.Fill(DS);
+                    accountInfo.Text = DS.Tables[0].Rows[0][0].ToString() + ", " + DS.Tables[0].Rows[0][1].ToString() + ", " + DS.Tables[0].Rows[0][2].ToString();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("This ID: " + id + " is never used");
+                accountInfo.Text = "";
+                removeAcc.Enabled = false;
             }
+            
 
 
         }
@@ -56,16 +70,10 @@ namespace SerialPort__DatabaseToArduino_Forms
         private void removeAcc_Click(object sender, EventArgs e)
         {
             try
-            {
-                if (id.Length == 11)
-                {
-                    query = "DELETE FROM accounts WHERE ID = '" + id + " \r'";
-                }
-                else
-                {
-                    query = "DELETE FROM accounts WHERE ID = '" + id + "'";
-                }
-
+            {                   
+                // this is t´he command
+                query = "DELETE FROM accounts WHERE ID = '" + id + "'";
+                
                 //This handles the connection and the query
                 cmd = new MySqlCommand(query, con);
 
