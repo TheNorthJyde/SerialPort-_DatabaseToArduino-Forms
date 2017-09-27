@@ -18,11 +18,7 @@ namespace SerialPort__DatabaseToArduino_Forms
         
         private addAccount()
         {
-            
-            
             InitializeComponent();
-            
-             
         }
 
         public addAccount(SerialPort mySerialPort)
@@ -44,7 +40,6 @@ namespace SerialPort__DatabaseToArduino_Forms
 
         private void addAccount_button_Click(object sender, EventArgs e)
         {
-
             //MySQL Connection
             MySqlConnection con = new MySqlConnection("host=localhost;user=root;database=rfid;");
 
@@ -55,6 +50,7 @@ namespace SerialPort__DatabaseToArduino_Forms
                 MySqlCommand check = new MySqlCommand(checkCuery,con);
                 con.Open();
                 MySqlDataReader rdr = check.ExecuteReader();
+
                 if (!rdr.Read())
                 {
                     con.Close();
@@ -85,8 +81,7 @@ namespace SerialPort__DatabaseToArduino_Forms
                     firstName.Text = "";
                     middleName.Text = "";
                     lastName.Text = "";
-                }
-                
+                }                
             }
             catch (Exception ex)
             {
