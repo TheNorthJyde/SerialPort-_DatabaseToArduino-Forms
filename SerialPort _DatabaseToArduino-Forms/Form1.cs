@@ -19,12 +19,12 @@ namespace SerialPort__DatabaseToArduino_Forms
         public Form1()
         {
             InitializeComponent();
-            
-            
             serialPort.DataReceived += serialPort_DataReceived;
             comPort.Text = "Select a COMPort";
             CheckForIllegalCrossThreadCalls = false;
             db = new database();
+
+            output.Items.Add("Connect to a COM port to begin");
 
             filToolStripMenuItem.Enabled = false;
             showAccounts.Enabled = false;
@@ -70,7 +70,7 @@ namespace SerialPort__DatabaseToArduino_Forms
 
                     connect.Text = "Disconnect";
                     output.Items.Clear();
-                    output.Items.Add("Connected");
+                    output.Items.Add("Connected to " + serialPort.PortName);
 
                     filToolStripMenuItem.Enabled = true;
                     showAccounts.Enabled = true;
@@ -101,6 +101,11 @@ namespace SerialPort__DatabaseToArduino_Forms
         {
             output.Items.Clear();
             connect.Select();
+            if(serialPort.IsOpen)
+            {
+                output.Items.Add("Connected to " + serialPort.PortName);
+            }
+            
         }
 
         private void addUserToolStripMenuItem_Click(object sender, EventArgs e)
