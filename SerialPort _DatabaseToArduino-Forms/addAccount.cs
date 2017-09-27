@@ -104,6 +104,7 @@ namespace SerialPort__DatabaseToArduino_Forms
             middleName.Text = "";
             lastName.Text = "";
             id.Text = "";
+            firstName.Select();
         }
     }
 }
