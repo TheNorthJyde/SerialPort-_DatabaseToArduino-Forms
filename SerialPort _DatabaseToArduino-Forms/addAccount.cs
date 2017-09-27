@@ -66,7 +66,7 @@ namespace SerialPort__DatabaseToArduino_Forms
                     //Executes the query and saves the data to the database
                     cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("Account successfully added!");
+                    MessageBox.Show("User successfully added!");
 
                     //Closes the connection to the database
                     con.Close();
@@ -76,7 +76,7 @@ namespace SerialPort__DatabaseToArduino_Forms
                 else
                 {
                     con.Close();
-                    MessageBox.Show("User allready excist");
+                    MessageBox.Show("User already exists");
                     id.Text = "";
                     firstName.Text = "";
                     middleName.Text = "";
