@@ -72,7 +72,7 @@ namespace SerialPort__DatabaseToArduino_Forms
                     //Executes the query and saves the data to the database
                     cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("User successfully added!" + firstName.Text[0] + middleName.Text[0] + lastName.Text[0]);
+                    MessageBox.Show("User successfully added!\n" + "Your initials: " + firstName.Text[0] + middleName.Text[0] + lastName.Text[0]);
 
                     //Closes the connection to the database
                     con.Close();
