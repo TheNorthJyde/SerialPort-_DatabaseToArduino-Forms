@@ -19,6 +19,7 @@ namespace SerialPort__DatabaseToArduino_Forms
         private addAccount()
         {
             InitializeComponent();
+
         }
 
         public addAccount(SerialPort mySerialPort)
