@@ -30,7 +30,7 @@ namespace SerialPort__DatabaseToArduino_Forms
             showAccounts.Enabled = false;
             clear.Enabled = false;
 
-            MessageBox.Show("remeber to save and upload new code");
+            MessageBox.Show("Remeber to save and upload new code");
             
         }
 

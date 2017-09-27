@@ -41,30 +41,18 @@ namespace SerialPort__DatabaseToArduino_Forms
 
         void text()
         {
-            if(database.checkID(id))
+            try
             {
-                try
-                {
-                    string sql = "SELECT `First_name`, `Middle_name`, `Last_name` FROM `accounts` WHERE ID ='" + id + "'";
-                    adapter = new MySqlDataAdapter(sql, con);
-                    DataSet DS = new DataSet();
-                    adapter.Fill(DS);
-                    accountInfo.Text = DS.Tables[0].Rows[0][0].ToString() + ", " + DS.Tables[0].Rows[0][1].ToString() + ", " + DS.Tables[0].Rows[0][2].ToString();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                string sql = "SELECT `First_name`, `Middle_name`, `Last_name` FROM `accounts` WHERE ID ='" + id + "'";
+                adapter = new MySqlDataAdapter(sql, con);
+                DataSet DS = new DataSet();
+                adapter.Fill(DS);
+                accountInfo.Text = DS.Tables[0].Rows[0][0].ToString() + ", " + DS.Tables[0].Rows[0][1].ToString() + ", " + DS.Tables[0].Rows[0][2].ToString();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("This ID: " + id + " is never used");
-                accountInfo.Text = "";
-                removeAcc.Enabled = false;
+                MessageBox.Show(ex.Message);
             }
-            
-
-
         }
 
         private void removeAcc_Click(object sender, EventArgs e)
