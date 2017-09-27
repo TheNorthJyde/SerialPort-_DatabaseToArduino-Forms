@@ -35,8 +35,11 @@ namespace SerialPort__DatabaseToArduino_Forms
         private void MySerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             id.Text = myserialPort.ReadLine();
+
             if (id.TextLength == 11)
+            {
                 id.Text += " \r";
+            }
         }
 
         private void removeAccount_button_Click(object sender, EventArgs e)
@@ -53,10 +56,7 @@ namespace SerialPort__DatabaseToArduino_Forms
             {
                 MessageBox.Show("This ID: " + id.Text + " is never used");
                 id.Text = "";
-            }
-            
-        }
-
-        
+            }            
+        }        
     }
 }

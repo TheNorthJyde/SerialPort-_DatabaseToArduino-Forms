@@ -36,6 +36,11 @@ namespace SerialPort__DatabaseToArduino_Forms
         private void MySerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             id.Text = myserialPort.ReadLine();
+
+            if (id.TextLength == 11)
+            {
+                id.Text += " \r";
+            }
         }
 
         private void addAccount_button_Click(object sender, EventArgs e)
