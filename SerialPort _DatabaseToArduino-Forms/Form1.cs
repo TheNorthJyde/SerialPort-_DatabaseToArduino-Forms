@@ -61,7 +61,6 @@ namespace SerialPort__DatabaseToArduino_Forms
 
                 filToolStripMenuItem.Enabled = false;
                 clear.Enabled = false;
-
             }
             else
             {
