@@ -27,7 +27,6 @@ namespace SerialPort__DatabaseToArduino_Forms
             output.Items.Add("Connect to a COM port to begin");
 
             filToolStripMenuItem.Enabled = false;
-            showAccounts.Enabled = false;
             clear.Enabled = false;
 
             MessageBox.Show("Remeber to save and upload new code");
@@ -61,9 +60,7 @@ namespace SerialPort__DatabaseToArduino_Forms
                 output.Items.Add("Disconnected");
 
                 filToolStripMenuItem.Enabled = false;
-                showAccounts.Enabled = false;
                 clear.Enabled = false;
-
             }
             else
             {
@@ -76,7 +73,6 @@ namespace SerialPort__DatabaseToArduino_Forms
                     output.Items.Add("Connected to " + serialPort.PortName);
 
                     filToolStripMenuItem.Enabled = true;
-                    showAccounts.Enabled = true;
                     clear.Enabled = true;
                 }
                 catch (Exception exc)
