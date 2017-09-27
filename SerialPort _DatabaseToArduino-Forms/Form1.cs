@@ -29,6 +29,8 @@ namespace SerialPort__DatabaseToArduino_Forms
             filToolStripMenuItem.Enabled = false;
             showAccounts.Enabled = false;
             clear.Enabled = false;
+
+            MessageBox.Show("remeber to save adn upload new code");
         }
 
         private void serialPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
