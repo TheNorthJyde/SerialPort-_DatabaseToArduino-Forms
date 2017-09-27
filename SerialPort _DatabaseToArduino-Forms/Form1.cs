@@ -15,7 +15,8 @@ namespace SerialPort__DatabaseToArduino_Forms
     public partial class Form1 : Form
     {
         database db;
-        
+        string mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
         public Form1()
         {
             InitializeComponent();
@@ -29,8 +30,7 @@ namespace SerialPort__DatabaseToArduino_Forms
             filToolStripMenuItem.Enabled = false;
             clear.Enabled = false;
 
-            MessageBox.Show("Remeber to save and upload new code");
-            
+            MessageBox.Show("Remeber to save and upload new code");            
         }
 
         private void serialPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
