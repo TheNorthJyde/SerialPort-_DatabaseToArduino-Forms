@@ -28,20 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.accountInfo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.removeAcc = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.accountInfo = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // accountInfo
-            // 
-            this.accountInfo.Location = new System.Drawing.Point(11, 41);
-            this.accountInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.accountInfo.Name = "accountInfo";
-            this.accountInfo.ReadOnly = true;
-            this.accountInfo.Size = new System.Drawing.Size(192, 20);
-            this.accountInfo.TabIndex = 0;
             // 
             // label1
             // 
@@ -75,15 +66,25 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // accountInfo
+            // 
+            this.accountInfo.AutoSize = true;
+            this.accountInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accountInfo.Location = new System.Drawing.Point(12, 42);
+            this.accountInfo.Name = "accountInfo";
+            this.accountInfo.Size = new System.Drawing.Size(94, 20);
+            this.accountInfo.TabIndex = 4;
+            this.accountInfo.Text = "accountInfo";
+            // 
             // removeAccountWarning
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(212, 125);
+            this.Controls.Add(this.accountInfo);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.removeAcc);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.accountInfo);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "removeAccountWarning";
             this.Text = "removeAccountWarning";
@@ -93,10 +94,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox accountInfo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button removeAcc;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label accountInfo;
     }
 }

@@ -25,6 +25,7 @@ namespace SerialPort__DatabaseToArduino_Forms
         {
             InitializeComponent();
             this.myserialPort = mySerialPort;
+            myserialPort.ReadExisting();
             myserialPort.DataReceived += MySerialPort_DataReceived;
         }
 

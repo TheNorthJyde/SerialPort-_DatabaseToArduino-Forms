@@ -117,6 +117,7 @@ namespace SerialPort__DatabaseToArduino_Forms
             addAccount addAccount = new addAccount(serialPort);
             addAccount.StartPosition = FormStartPosition.CenterParent;
             addAccount.ShowDialog();
+            serialPort.ReadExisting();
             serialPort.DataReceived += serialPort_DataReceived;
         }
 
@@ -126,6 +127,7 @@ namespace SerialPort__DatabaseToArduino_Forms
             removeAccount removeAccount = new removeAccount(serialPort);
             removeAccount.StartPosition = FormStartPosition.CenterParent;
             removeAccount.ShowDialog();
+            serialPort.ReadExisting();
             serialPort.DataReceived += serialPort_DataReceived;
         }
 

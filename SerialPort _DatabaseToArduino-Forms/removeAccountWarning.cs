@@ -47,7 +47,7 @@ namespace SerialPort__DatabaseToArduino_Forms
                 adapter = new MySqlDataAdapter(sql, con);
                 DataSet DS = new DataSet();
                 adapter.Fill(DS);
-                accountInfo.Text = DS.Tables[0].Rows[0][0].ToString() + ", " + DS.Tables[0].Rows[0][1].ToString() + ", " + DS.Tables[0].Rows[0][2].ToString();
+                accountInfo.Text = DS.Tables[0].Rows[0][0].ToString() + " " + DS.Tables[0].Rows[0][1].ToString() + " " + DS.Tables[0].Rows[0][2].ToString();
             }
             catch (Exception ex)
             {
