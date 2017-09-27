@@ -15,7 +15,6 @@ namespace SerialPort__DatabaseToArduino_Forms
     public partial class Form1 : Form
     {
         database db;
-        string mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
         public Form1()
         {
