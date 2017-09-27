@@ -26,7 +26,7 @@ namespace SerialPort__DatabaseToArduino_Forms
         public bool checkID(string id)
         {
             bool result = false;
-            int a = 0;
+            
             string sql = "SELECT * FROM accounts WHERE ID = '" + id + "'";
 
             cmd = new MySqlCommand(sql, con);
