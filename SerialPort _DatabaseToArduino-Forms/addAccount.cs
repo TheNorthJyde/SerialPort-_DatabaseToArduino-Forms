@@ -92,5 +92,13 @@ namespace SerialPort__DatabaseToArduino_Forms
                 }
             }
         }
+
+        private void clear_Click(object sender, EventArgs e)
+        {
+            firstName.Text = "";
+            middleName.Text = "";
+            lastName.Text = "";
+            id.Text = "";
+        }
     }
 }
