@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Door_Lock"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="Door Lock" Height="350" Width="525">
+    <Window.Resources>
+        <XmlDataProvider x:Key="ComPorts" Source="CommsData.xml" XPath="/Comms/Ports" />
+        <XmlDataProvider x:Key="ComSpeed" Source="CommsData.xml" XPath="/Comms/Baud" />
+    </Window.Resources>
+    <Grid Margin="0,0,2,-2">
+
+        <Menu Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" MinWidth="45" MinHeight="20" Height="20" Width="45">
+            <MenuItem Header="Menu" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <MenuItem Header="Add User" Click="MenuItem_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <MenuItem Header="Remove User" Click="MenuItem_Click_1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            </MenuItem>
+        </Menu>
+        <ComboBox x:Name="comPorts" Margin="64,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="106" SelectedIndex="0"/>
+        <Button Content="Connect" HorizontalAlignment="Left" Margin="175,9,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
     </Grid>
+
 </Window>

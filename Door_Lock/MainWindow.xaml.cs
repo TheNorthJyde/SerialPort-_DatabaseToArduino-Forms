@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO.Ports;
+
 
 namespace Door_Lock
 {
@@ -20,9 +22,29 @@ namespace Door_Lock
     /// </summary>
     public partial class MainWindow : Window
     {
+        SerialPort serialPort;
         public MainWindow()
         {
             InitializeComponent();
+            serialPort = new SerialPort
+            comPorts.Text = "Select a COMPort";
+            serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+            serialPort.Open();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }       
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

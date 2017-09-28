@@ -16,7 +16,7 @@ namespace SerialPort__DatabaseToArduino_Forms
     public partial class Form1 : Form
     {
         database db;
-        string mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        
         MySqlConnection con = new MySqlConnection("host=localhost;user=root;database=rfid;");
         MySqlCommand cmd;
         public Form1()
@@ -66,7 +66,7 @@ namespace SerialPort__DatabaseToArduino_Forms
                 serialPort.WriteLine("D");
                 try
                 {
-                    string sql = "INSERT INTO log (`ID`, `Initials`, `Dato & Time`, `Message`) VALUES ('" + data + "',' ','" + DateTime.UtcNow + "','Have tried open door')";
+                    string sql = "INSERT INTO log (`ID`, `Initials`, `Dato & Time`, `Message`) VALUES ('" + data + "',' ','" + DateTime.UtcNow + "','Have tried to open door')";
                     cmd = new MySqlCommand(sql, con);
                     con.Open();
                     cmd.ExecuteNonQuery();
