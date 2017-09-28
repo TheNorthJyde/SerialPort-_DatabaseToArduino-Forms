@@ -37,6 +37,7 @@ namespace SerialPort__DatabaseToArduino_Forms
         {            
             try
             {
+
                 MySqlCommand cmd;  
                 string query = "Delete FROM log";
                 cmd = new MySqlCommand(query, con);
