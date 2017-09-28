@@ -22,16 +22,22 @@ namespace Door_Lock
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        SerialPort serialPort;
         public MainWindow()
         {
             InitializeComponent();
             comPorts.Text = Comport.comPort;
-            output.DataContext = new Comport();
-            
+            serialPort = new SerialPort("COM4", 9600);
+            serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+            serialPort.Open();
         }
-        
-        
+        private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
+        {
+            string testString = null;
+            testString = serialPort.ReadLine();
+            output.Items.Add(testString);
+        }
+
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
