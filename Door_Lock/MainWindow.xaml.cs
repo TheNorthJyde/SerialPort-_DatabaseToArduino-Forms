@@ -27,7 +27,7 @@ namespace Door_Lock
         {
             InitializeComponent();
             comPorts.Text = Comport.comPort;
-            Comport COM = new Comport();
+            output.DataContext = new Comport();
             
         }
         
@@ -41,11 +41,26 @@ namespace Door_Lock
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
 
-        }       
+        }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void clear_Click(object sender, RoutedEventArgs e)
         {
-            
+
+        }
+
+        private void showLog_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void showAccounts_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void connect_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

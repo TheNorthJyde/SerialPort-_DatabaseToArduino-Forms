@@ -36,9 +36,8 @@
             HorizontalAlignment="Left"
             Margin="10,230,0,0"
             Width="90"
-            Click="Button_Click"
             Height="19"
-            VerticalAlignment="Top"
+            VerticalAlignment="Top" Click="clear_Click"
             />
 
         <Button
@@ -47,9 +46,8 @@
             HorizontalAlignment="Left"
             Margin="10,200,0,0"
             Width="90"
-            Click="Button_Click"
             Height="19"
-            VerticalAlignment="Top"
+            VerticalAlignment="Top" Click="showLog_Click"
             />
 
         <Button
@@ -58,9 +56,8 @@
             HorizontalAlignment="Left"
             Margin="300,200,0,0"
             Width="90"
-            Click="Button_Click"
             Height="19"
-            VerticalAlignment="Top"
+            VerticalAlignment="Top" Click="showAccounts_Click"
             />
 
         <Button
@@ -69,9 +66,8 @@
             HorizontalAlignment="Left"
             Margin="300,230,0,0"
             Width="90"
-            Click="Button_Click"
             Height="19"
-            VerticalAlignment="Top"
+            VerticalAlignment="Top" Click="connect_Click"
             />
 
         <ListBox

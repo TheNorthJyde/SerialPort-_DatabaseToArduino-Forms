@@ -28,7 +28,7 @@ namespace Door_Lock
 
             string testString = null;
             testString = serialPort.ReadLine();
-            Console.Write(testString);
+            
 
         }
     }
