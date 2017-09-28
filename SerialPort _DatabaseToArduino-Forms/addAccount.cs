@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using MySql.Data.MySqlClient;
 
+
 namespace SerialPort__DatabaseToArduino_Forms
 {
     public partial class addAccount : Form
@@ -62,7 +63,7 @@ namespace SerialPort__DatabaseToArduino_Forms
                     con.Close();
 
                     string query = "INSERT INTO accounts (ID,First_name,Middle_name,Last_name) VALUES('" + this.id.Text + "','" + this.firstName.Text + "','" + this.middleName.Text + "','" + this.lastName.Text + "')";
-
+                    
                     //This handles the connection and the query
                     MySqlCommand cmd = new MySqlCommand(query, con);
 
@@ -71,12 +72,16 @@ namespace SerialPort__DatabaseToArduino_Forms
 
                     //Executes the query and saves the data to the database
                     cmd.ExecuteNonQuery();
-
-                    MessageBox.Show("User successfully added!\n" + "Initials: " + firstName.Text[0] + middleName.Text[0] + lastName.Text[0]);
+                    string Initials = firstName.Text[0].ToString() + middleName.Text[0].ToString() + lastName.Text[0].ToString();
+                    MessageBox.Show("User successfully added!\n" + "Initials: " + Initials);
 
                     //Closes the connection to the database
                     con.Close();
-
+                    string sql = "INSERT INTO log (`ID`, `Initials`, `Dato & Time`, `Message`) VALUES ('" + id.Text + "','" + Initials + "','" + DateTime.UtcNow + "','Have been Added')";
+                    cmd = new MySqlCommand(sql, con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
                     this.Close();
                 }
                 else
@@ -92,6 +97,7 @@ namespace SerialPort__DatabaseToArduino_Forms
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                
                 if (con.State == ConnectionState.Open)
                 {
                     con.Close();

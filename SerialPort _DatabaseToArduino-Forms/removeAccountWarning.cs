@@ -15,7 +15,7 @@ namespace SerialPort__DatabaseToArduino_Forms
     {
         //MySQL Connection
         MySqlConnection con = new MySqlConnection("host=localhost;user=root;database=rfid;");
-
+        
         //This handles the connection and the query
         MySqlCommand cmd;
 
@@ -41,6 +41,8 @@ namespace SerialPort__DatabaseToArduino_Forms
 
         void text()
         {
+            Userinitials userinitials = new Userinitials();
+            userinitials.Inital();
             try
             {
                 string sql = "SELECT `First_name`, `Middle_name`, `Last_name` FROM `accounts` WHERE ID ='" + id + "'";
@@ -48,10 +50,7 @@ namespace SerialPort__DatabaseToArduino_Forms
                 DataSet DS = new DataSet();
                 adapter.Fill(DS);
                 accountInfo.Text = DS.Tables[0].Rows[0][0].ToString() + " " + DS.Tables[0].Rows[0][1].ToString() + " " + DS.Tables[0].Rows[0][2].ToString();
-                string firstName = DS.Tables[0].Rows[0][0].ToString();
-                string middleName = DS.Tables[0].Rows[0][1].ToString();
-                string lastName = DS.Tables[0].Rows[0][2].ToString();
-                Initials.Text = firstName[0].ToString() + middleName[0].ToString() + lastName[0].ToString();
+                Initials.Text = Userinitials.initials;
             }
             catch (Exception ex)
             {
@@ -78,6 +77,11 @@ namespace SerialPort__DatabaseToArduino_Forms
                 MessageBox.Show("Account successfully removed!");
 
                 //Closes the connection to the database
+                con.Close();
+                string sql = "INSERT INTO log (`ID`, `Initials`, `Dato & Time`, `Message`) VALUES ('" + id + "','" + Userinitials.initials + "','" + DateTime.UtcNow + "','Have been Removed')";
+                cmd = new MySqlCommand(sql, con);
+                con.Open();
+                cmd.ExecuteNonQuery();
                 con.Close();
             }
             catch (Exception ex)

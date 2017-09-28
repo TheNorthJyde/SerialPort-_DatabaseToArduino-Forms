@@ -1,6 +1,6 @@
 ﻿namespace SerialPort__DatabaseToArduino_Forms
 {
-    partial class ok_button
+    partial class Log
     {
         /// <summary>
         /// Required designer variable.
@@ -28,49 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.log1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            this.accounts = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.accounts)).BeginInit();
+            this.clearLog = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.log1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // log1
+            // 
+            this.log1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.log1.Location = new System.Drawing.Point(12, 12);
+            this.log1.Name = "log1";
+            this.log1.Size = new System.Drawing.Size(502, 342);
+            this.log1.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(509, 306);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Location = new System.Drawing.Point(521, 365);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(56, 19);
-            this.button1.TabIndex = 0;
+            this.button1.TabIndex = 1;
             this.button1.Text = "Ok";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // accounts
+            // clearLog
             // 
-            this.accounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.accounts.Location = new System.Drawing.Point(9, 10);
-            this.accounts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.accounts.Name = "accounts";
-            this.accounts.RowTemplate.Height = 24;
-            this.accounts.Size = new System.Drawing.Size(496, 315);
-            this.accounts.TabIndex = 4;
+            this.clearLog.Location = new System.Drawing.Point(11, 365);
+            this.clearLog.Margin = new System.Windows.Forms.Padding(2);
+            this.clearLog.Name = "clearLog";
+            this.clearLog.Size = new System.Drawing.Size(101, 19);
+            this.clearLog.TabIndex = 2;
+            this.clearLog.Text = "Clear Log";
+            this.clearLog.UseVisualStyleBackColor = true;
+            this.clearLog.Click += new System.EventHandler(this.clearLog_Click);
             // 
-            // ok_button
+            // Log
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 335);
-            this.Controls.Add(this.accounts);
+            this.ClientSize = new System.Drawing.Size(588, 395);
+            this.Controls.Add(this.clearLog);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "ok_button";
-            this.Text = "show Accounts";
-            ((System.ComponentModel.ISupportInitialize)(this.accounts)).EndInit();
+            this.Controls.Add(this.log1);
+            this.Name = "Log";
+            this.Text = "Log";
+            ((System.ComponentModel.ISupportInitialize)(this.log1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView log1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView accounts;
+        private System.Windows.Forms.Button clearLog;
     }
 }

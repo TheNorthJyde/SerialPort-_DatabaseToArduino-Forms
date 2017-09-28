@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
+using MySql.Data.MySqlClient;
 
 namespace SerialPort__DatabaseToArduino_Forms
 {
@@ -16,7 +17,8 @@ namespace SerialPort__DatabaseToArduino_Forms
     {
         database db;
         string mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
+        MySqlConnection con = new MySqlConnection("host=localhost;user=root;database=rfid;");
+        MySqlCommand cmd;
         public Form1()
         {
             InitializeComponent();
@@ -28,26 +30,52 @@ namespace SerialPort__DatabaseToArduino_Forms
             output.Items.Add("Connect to a COM port to begin");
 
             filToolStripMenuItem.Enabled = false;
-            clear.Enabled = false;
-
+            clear.Enabled = false;            
             MessageBox.Show("Remeber to save and upload new code");            
         }
 
         private void serialPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             string data = serialPort.ReadLine();
-
-            //data = data.Replace("\r", "");
             
+            //data = data.Replace("\r", "");
+
             if (db.checkID(data))
             {
                 output.Items.Add("ID: " + data);
                 serialPort.WriteLine("A");
+                removeID.TextToBring = data;
+                Userinitials userinitials = new Userinitials();
+                userinitials.Inital();
+                try
+                {
+                    string sql = "INSERT INTO log (`ID`, `Initials`, `Dato & Time`, `Message`) VALUES ('" + data + "','" + Userinitials.initials +"','" + DateTime.UtcNow + "','Have open door')";
+                    cmd = new MySqlCommand(sql, con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             else
             {
                 output.Items.Add("ID Not Available");
                 serialPort.WriteLine("D");
+                try
+                {
+                    string sql = "INSERT INTO log (`ID`, `Initials`, `Dato & Time`, `Message`) VALUES ('" + data + "',' ','" + DateTime.UtcNow + "','Have tried open door')";
+                    cmd = new MySqlCommand(sql, con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -132,6 +160,13 @@ namespace SerialPort__DatabaseToArduino_Forms
             ok_button test = new ok_button();
             test.StartPosition = FormStartPosition.CenterParent;
             test.ShowDialog();
+        }
+
+        private void showLog_Click(object sender, EventArgs e)
+        {
+            Log log = new Log();
+            log.StartPosition = FormStartPosition.CenterParent;
+            log.ShowDialog();
         }
     }
 }
