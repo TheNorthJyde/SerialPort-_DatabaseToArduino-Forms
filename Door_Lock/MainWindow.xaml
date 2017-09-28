@@ -8,6 +8,7 @@
         Title="Door Lock"
         Width="411"
         Height="301">
+    
     <Window.Resources>
         <XmlDataProvider x:Key="ComPorts" Source="CommsData.xml" XPath="/Comms/Ports" />
         <XmlDataProvider x:Key="ComSpeed" Source="CommsData.xml" XPath="/Comms/Baud" />
