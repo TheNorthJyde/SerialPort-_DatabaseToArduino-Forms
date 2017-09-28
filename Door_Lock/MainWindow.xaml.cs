@@ -30,12 +30,13 @@ namespace Door_Lock
             serialPort = new SerialPort("COM4", 9600);
             serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
             serialPort.Open();
+            output.Items.Add("ID: ");
         }
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
-            string testString = null;
-            testString = serialPort.ReadLine();
-            output.Items.Add(testString);
+            string data = null;
+            data = serialPort.ReadLine();
+            
         }
 
 
