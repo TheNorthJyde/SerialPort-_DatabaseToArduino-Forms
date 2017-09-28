@@ -7,7 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
 
-namespace SerialPort__DatabaseToArduino_Forms
+namespace Door_Lock
 {
     class database
     {
