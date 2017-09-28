@@ -26,7 +26,7 @@ namespace Door_Lock
         public MainWindow()
         {
             InitializeComponent();
-            
+            comPorts.Text = Comport.comPort;
         }
         
         

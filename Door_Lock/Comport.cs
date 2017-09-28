@@ -10,11 +10,12 @@ namespace Door_Lock
     class Comport
     {
         SerialPort serialPort;
+        public static string comPort = "Select a COMPort";
 
         public Comport()
         {
             serialPort = new SerialPort("COM4", 9600);
-            comPorts.Text = "Select a COMPort";
+            
             serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
             serialPort.Open();
         }
@@ -26,7 +27,7 @@ namespace Door_Lock
         {
 
             string testString = null;
-            string indata = serialPort.ReadLine();
+            testString = serialPort.ReadLine();
 
             
         }
