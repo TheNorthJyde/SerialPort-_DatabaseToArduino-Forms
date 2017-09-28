@@ -22,33 +22,16 @@ namespace Door_Lock
     /// </summary>
     public partial class MainWindow : Window
     {
-        SerialPort serialPort;
+        
         public MainWindow()
         {
             InitializeComponent();
-            serialPort = new SerialPort("COM4", 9600);
-            comPorts.Text = "Select a COMPort";
-            serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
-            serialPort.Open();
+            comPorts.Text = Comport.comPort;
+            Comport COM = new Comport();
+            
         }
-        ~MainWindow()
-        {
-            serialPort.Close();
-        }
-        private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
-        {
-            SerialPort sp = (SerialPort)sender;
-            string testString = null;
-            string indata = sp.ReadLine();
-            if (indata.Length >= 4)
-            {
-                testString = indata.Substring(0, 4);
-                // Update the value
-                //if (testString == "x1-1") EllipseBrush = Brushes.Blue;
-                //else EllipseBrush = Brushes.Red;
-            }
-            Console.Write(testString);
-        }
+        
+        
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
