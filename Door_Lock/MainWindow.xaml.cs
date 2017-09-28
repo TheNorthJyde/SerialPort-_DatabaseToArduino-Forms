@@ -26,7 +26,7 @@ namespace Door_Lock
         public MainWindow()
         {
             InitializeComponent();
-            comPorts.Text = Comport.comPort;
+            
             serialPort = new SerialPort("COM4", 9600);
             serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
             serialPort.Open();
