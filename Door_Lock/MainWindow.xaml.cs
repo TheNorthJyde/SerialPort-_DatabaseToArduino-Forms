@@ -102,7 +102,10 @@ namespace Door_Lock
 
         private void showLog_Click(object sender, RoutedEventArgs e)
         {
-            
+            Log log = new Log();
+            log.Owner = this;
+            log.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            log.ShowDialog();
         }
 
         private void showAccounts_Click(object sender, RoutedEventArgs e)
