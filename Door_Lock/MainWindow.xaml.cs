@@ -27,10 +27,12 @@ namespace Door_Lock
         public MainWindow()
         {
             InitializeComponent();
+
             db = new database();
 
-            comPorts.Items.Add("Select a COMPort");
-            
+            comPorts.Items.Add("Select a COMPort");            
+            output.Items.Add("Select a COM port and Connect");
+
             serialPort = new SerialPort();
             serialPort.BaudRate = 9600;
             serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
@@ -43,7 +45,7 @@ namespace Door_Lock
             
             if (db.checkID(data))
             {
-                output.Items.Add("ID: " + data);
+                output.Items.Add("ID: " );
                 serialPort.WriteLine("A");
             }
             else
