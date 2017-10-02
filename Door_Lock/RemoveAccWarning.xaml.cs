@@ -1,44 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using System.Data;
 using MySql.Data.MySqlClient;
 
-namespace SerialPort__DatabaseToArduino_Forms
+namespace Door_Lock
 {
-    public partial class removeAccountWarning : Form
+    /// <summary>
+    /// Interaction logic for RemoveAccWarning.xaml
+    /// </summary>
+    public partial class RemoveAccWarning : Window
     {
-        //MySQL Connection
         MySqlConnection con = new MySqlConnection("host=localhost;user=root;database=rfid;");
-        
+
         //This handles the connection and the query
         MySqlCommand cmd;
 
         //database
         database database = new database();
 
-        
+
         MySqlDataAdapter adapter;
 
         string query;
         string id;
 
-
-        public removeAccountWarning()
+        public RemoveAccWarning()
         {
             InitializeComponent();
-
-            id = removeID.TextToBring;
-            
+            id = RemoveID.TextToBring;
             text();
-        }     
-
-
+        }
         void text()
         {
             Userinitials userinitials = new Userinitials();
@@ -49,8 +51,8 @@ namespace SerialPort__DatabaseToArduino_Forms
                 adapter = new MySqlDataAdapter(sql, con);
                 DataSet DS = new DataSet();
                 adapter.Fill(DS);
-                accountInfo.Text = DS.Tables[0].Rows[0][0].ToString() + " " + DS.Tables[0].Rows[0][1].ToString() + " " + DS.Tables[0].Rows[0][2].ToString();
-                Initials.Text = Userinitials.initials;
+                accountInfo.Content = DS.Tables[0].Rows[0][0].ToString() + " " + DS.Tables[0].Rows[0][1].ToString() + " " + DS.Tables[0].Rows[0][2].ToString();
+                Initials.Content = Userinitials.initials;
             }
             catch (Exception ex)
             {
@@ -58,13 +60,13 @@ namespace SerialPort__DatabaseToArduino_Forms
             }
         }
 
-        private void removeAcc_Click(object sender, EventArgs e)
+        private void removeAcc_Click(object sender, RoutedEventArgs e)
         {
             try
-            {                   
+            {
                 // this is the command
                 query = "DELETE FROM accounts WHERE ID = '" + id + "'";
-                
+
                 //This handles the connection and the query
                 cmd = new MySqlCommand(query, con);
 
@@ -92,7 +94,7 @@ namespace SerialPort__DatabaseToArduino_Forms
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

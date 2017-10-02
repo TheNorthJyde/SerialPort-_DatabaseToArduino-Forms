@@ -73,6 +73,10 @@ namespace Door_Lock
             add.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             add.ShowDialog();
             serialPort.DataReceived += new SerialDataReceivedEventHandler(serialPort_DataReceived);
+            //serialPort.DiscardInBuffer();
+            //serialPort.DiscardOutBuffer();
+            //serialPort.Close();
+            //serialPort.Open();
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
@@ -83,6 +87,10 @@ namespace Door_Lock
             re.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             re.ShowDialog();
             serialPort.DataReceived += new SerialDataReceivedEventHandler(serialPort_DataReceived);
+            //serialPort.DiscardInBuffer();
+            //serialPort.DiscardOutBuffer();
+            //serialPort.Close();
+            //serialPort.Open();
         }
 
         private void clear_Click(object sender, RoutedEventArgs e)

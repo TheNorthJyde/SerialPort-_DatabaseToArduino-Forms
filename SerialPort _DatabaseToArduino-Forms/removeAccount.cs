@@ -24,9 +24,9 @@ namespace SerialPort__DatabaseToArduino_Forms
         public removeAccount(SerialPort mySerialPort)
         {
             InitializeComponent();
-            this.myserialPort = mySerialPort;
-            myserialPort.ReadExisting();
+            this.myserialPort = mySerialPort;            
             myserialPort.DataReceived += MySerialPort_DataReceived;
+            myserialPort.ReadExisting();
         }
 
         ~removeAccount()

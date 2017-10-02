@@ -31,6 +31,8 @@ namespace Door_Lock
             InitializeComponent();
             this.myserialPort = mySerialPort;
             myserialPort.DataReceived += MySerialPort_DataReceived;
+            myserialPort.DiscardInBuffer();
+            mySerialPort.DiscardOutBuffer();
             id.IsReadOnly = true;
         }
         ~RemoveAcc()
@@ -56,7 +58,10 @@ namespace Door_Lock
             if (database.checkID(id.Text))
             {
                 RemoveID.TextToBring = id.Text;
-                
+                RemoveAccWarning warning = new RemoveAccWarning();
+                warning.Owner = this;
+                warning.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                warning.ShowDialog();
                 this.Close();
             }
             else

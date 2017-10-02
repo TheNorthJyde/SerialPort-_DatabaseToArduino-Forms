@@ -34,6 +34,8 @@ namespace Door_Lock
             InitializeComponent();
             this.myserialPort = mySerialPort;
             myserialPort.DataReceived += MySerialPort_DataReceived;
+            myserialPort.DiscardInBuffer();
+            mySerialPort.DiscardOutBuffer();
             id.IsReadOnly = true;
         }
         ~AddAcc()
