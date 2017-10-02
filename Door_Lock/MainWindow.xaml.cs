@@ -41,7 +41,7 @@ namespace Door_Lock
         {
             SerialPort serial = (SerialPort)sender;
             string data = serial.ReadExisting();
-            string hej;
+            
             
             if (db.checkID(data))
             {

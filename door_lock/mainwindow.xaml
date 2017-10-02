@@ -75,7 +75,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Width="369"
-            Height="148" IsSynchronizedWithCurrentItem="False" IsEnabled="False" SelectedIndex="0"
+            Height="148" IsSynchronizedWithCurrentItem="False" SelectedIndex="0" IsEnabled="False"
             />
 
     </Grid>
