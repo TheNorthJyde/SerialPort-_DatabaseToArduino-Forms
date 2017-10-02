@@ -27,7 +27,6 @@ namespace Door_Lock
         public MainWindow()
         {
             InitializeComponent();
-
             db = new database();
 
             comPorts.Items.Add("Select a COMPort");            
@@ -40,17 +39,18 @@ namespace Door_Lock
         }
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
-            string data = serialPort.ReadLine();
-            
+            SerialPort serial = (SerialPort)sender;
+            string data = serial.ReadExisting();
+            string hej;
             
             if (db.checkID(data))
             {
-                output.Items.Add("ID: " );
+                this.output.Items.Add("ID: " + data );
                 serialPort.WriteLine("A");
             }
             else
             {
-                output.Items.Add("ID Not Available");
+                this.output.Items.Add("ID Not Available");
                 serialPort.WriteLine("D");
             }
         }
@@ -101,7 +101,7 @@ namespace Door_Lock
                     serialPort.Parity = Parity.None;
                     serialPort.StopBits = StopBits.One;
                     serialPort.DataBits = 8;
-                    serialPort.Handshake = Handshake.None;
+                    serialPort.Handshake = Handshake.None;                    
                     serialPort.Open();
 
                     connect.Content = "Disconnect";

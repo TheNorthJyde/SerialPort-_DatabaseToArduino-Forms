@@ -46,7 +46,7 @@
             // connect
             // 
             this.connect.Location = new System.Drawing.Point(211, 177);
-            this.connect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.connect.Margin = new System.Windows.Forms.Padding(2);
             this.connect.Name = "connect";
             this.connect.Size = new System.Drawing.Size(75, 19);
             this.connect.TabIndex = 1;
@@ -58,7 +58,7 @@
             // 
             this.comPort.FormattingEnabled = true;
             this.comPort.Location = new System.Drawing.Point(92, 176);
-            this.comPort.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comPort.Margin = new System.Windows.Forms.Padding(2);
             this.comPort.Name = "comPort";
             this.comPort.Size = new System.Drawing.Size(115, 21);
             this.comPort.TabIndex = 2;
@@ -68,7 +68,7 @@
             // 
             this.output.FormattingEnabled = true;
             this.output.Location = new System.Drawing.Point(9, 25);
-            this.output.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.output.Margin = new System.Windows.Forms.Padding(2);
             this.output.Name = "output";
             this.output.Size = new System.Drawing.Size(278, 121);
             this.output.TabIndex = 3;
@@ -76,7 +76,7 @@
             // clear
             // 
             this.clear.Location = new System.Drawing.Point(9, 177);
-            this.clear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clear.Margin = new System.Windows.Forms.Padding(2);
             this.clear.Name = "clear";
             this.clear.Size = new System.Drawing.Size(75, 19);
             this.clear.TabIndex = 4;
@@ -122,7 +122,7 @@
             // showAccounts
             // 
             this.showAccounts.Location = new System.Drawing.Point(193, 154);
-            this.showAccounts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.showAccounts.Margin = new System.Windows.Forms.Padding(2);
             this.showAccounts.Name = "showAccounts";
             this.showAccounts.Size = new System.Drawing.Size(93, 19);
             this.showAccounts.TabIndex = 6;
@@ -154,7 +154,7 @@
             this.Controls.Add(this.connect);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
