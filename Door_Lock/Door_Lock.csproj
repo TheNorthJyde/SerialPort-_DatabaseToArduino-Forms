@@ -67,6 +67,9 @@
       <DependentUpon>RemoveAccWarning.xaml</DependentUpon>
     </Compile>
     <Compile Include="RemoveID.cs" />
+    <Compile Include="showacc.xaml.cs">
+      <DependentUpon>showacc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Userinitials.cs" />
     <Page Include="AddAcc.xaml">
       <SubType>Designer</SubType>
@@ -97,6 +100,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RemoveAccWarning.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="showacc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

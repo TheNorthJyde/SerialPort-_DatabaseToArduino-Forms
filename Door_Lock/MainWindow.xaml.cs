@@ -110,7 +110,10 @@ namespace Door_Lock
 
         private void showAccounts_Click(object sender, RoutedEventArgs e)
         {
-
+            showacc show = new showacc();
+            show.Owner = this;
+            show.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            show.ShowDialog();
         }
 
         private void connect_Click(object sender, RoutedEventArgs e)
