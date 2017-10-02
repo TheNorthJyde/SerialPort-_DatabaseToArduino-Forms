@@ -35,6 +35,7 @@ namespace Door_Lock
 
             clear.IsEnabled = false;
             dropdown.IsEnabled = false;
+            
 
             serialPort = new SerialPort();
             serialPort.DataReceived += new SerialDataReceivedEventHandler(serialPort_DataReceived);
@@ -52,12 +53,12 @@ namespace Door_Lock
             if (db.checkID(data))
             {
                 data = data.Replace("\r", "");
-                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => this.output.Items.Add("ID: " + data)));
+                Dispatcher.BeginInvoke((Action)(() => output.Items.Add("ID: " + data)));
                 serialPort.WriteLine("A");
             }
             else
             {
-                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => this.output.Items.Add("ID Not Available")));
+                Dispatcher.BeginInvoke((Action)(() => output.Items.Add("ID Not Authorized")));
                 serialPort.WriteLine("D");
             }
             
@@ -66,7 +67,12 @@ namespace Door_Lock
         
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-
+            serialPort.DataReceived -= new SerialDataReceivedEventHandler(serialPort_DataReceived);
+            AddAcc add = new AddAcc(serialPort);
+            add.Owner = this;
+            add.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            add.ShowDialog();
+            serialPort.DataReceived += new SerialDataReceivedEventHandler(serialPort_DataReceived);
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
