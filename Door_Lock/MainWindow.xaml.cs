@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO.Ports;
+using System.Windows.Threading;
 
 
 namespace Door_Lock
@@ -28,32 +29,41 @@ namespace Door_Lock
         {
             InitializeComponent();
             db = new database();
-
+            
             comPorts.Items.Add("Select a COMPort");            
             output.Items.Add("Select a COM port and Connect");
 
+            clear.IsEnabled = false;
+            dropdown.IsEnabled = false;
+
             serialPort = new SerialPort();
-            serialPort.BaudRate = 9600;
-            serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+            serialPort.DataReceived += new SerialDataReceivedEventHandler(serialPort_DataReceived);
                         
         }
-        private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
+
+        ~MainWindow()
         {
-            SerialPort serial = (SerialPort)sender;
-            string data = serial.ReadExisting();
-            
-            
+            serialPort.DataReceived -= new SerialDataReceivedEventHandler(serialPort_DataReceived);
+            serialPort.Close();
+        }
+        private void serialPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        {            
+            string data = serialPort.ReadLine();
             if (db.checkID(data))
             {
-                this.output.Items.Add("ID: " + data );
+                data = data.Replace("\r", "");
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => this.output.Items.Add("ID: " + data)));
                 serialPort.WriteLine("A");
             }
             else
             {
-                this.output.Items.Add("ID Not Available");
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => this.output.Items.Add("ID Not Available")));
                 serialPort.WriteLine("D");
             }
+            
+            
         }
+        
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
@@ -66,12 +76,14 @@ namespace Door_Lock
 
         private void clear_Click(object sender, RoutedEventArgs e)
         {
+            output.Items.Clear();
+            output.Items.Add("Connected to " + serialPort.PortName);
 
         }
 
         private void showLog_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void showAccounts_Click(object sender, RoutedEventArgs e)
@@ -81,23 +93,22 @@ namespace Door_Lock
 
         private void connect_Click(object sender, RoutedEventArgs e)
         {
-            if(!serialPort.IsOpen)
-            {
-                
-            }
+            
             if (serialPort.IsOpen)
             {
                 serialPort.Close();
                 connect.Content = "Connect";
                 output.Items.Add("Disconnected");
+                clear.IsEnabled = false;
+                dropdown.IsEnabled = false;
 
-                
             }
             else
             {
                 try
                 {
                     serialPort.PortName = comPorts.SelectedItem.ToString();
+                    serialPort.BaudRate = 9600;
                     serialPort.Parity = Parity.None;
                     serialPort.StopBits = StopBits.One;
                     serialPort.DataBits = 8;
@@ -107,13 +118,13 @@ namespace Door_Lock
                     connect.Content = "Disconnect";
                     output.Items.Clear();
                     output.Items.Add("Connected to " + serialPort.PortName);
+                    clear.IsEnabled = true;
+                    dropdown.IsEnabled = true;
 
-                    
                 }
                 catch (Exception exc)
                 {
-                    output.Items.Add("Error:");
-                    output.Items.Add(exc.Message);
+                    MessageBox.Show(exc.Message);
                 }
             }
 
@@ -129,6 +140,8 @@ namespace Door_Lock
                 comPorts.Items.Add(ports[i]);
                 i++;
             }
-        }
+            
+        }        
+        
     }
 }

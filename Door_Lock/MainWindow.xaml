@@ -13,7 +13,7 @@
     
     <Grid Margin="0,0,2,-2">
 
-        <Menu Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" MinWidth="45" MinHeight="20" Height="20" Width="45">
+        <Menu x:Name="dropdown" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" MinWidth="45" MinHeight="20" Height="20" Width="45">
             <MenuItem Header="Menu" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <MenuItem Header="Add User" Click="MenuItem_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <MenuItem Header="Remove User" Click="MenuItem_Click_1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
