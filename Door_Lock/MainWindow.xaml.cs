@@ -77,7 +77,12 @@ namespace Door_Lock
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-
+            serialPort.DataReceived -= new SerialDataReceivedEventHandler(serialPort_DataReceived);
+            RemoveAcc re = new RemoveAcc(serialPort);
+            re.Owner = this;
+            re.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            re.ShowDialog();
+            serialPort.DataReceived += new SerialDataReceivedEventHandler(serialPort_DataReceived);
         }
 
         private void clear_Click(object sender, RoutedEventArgs e)

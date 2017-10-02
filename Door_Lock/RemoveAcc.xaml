@@ -1,0 +1,42 @@
+﻿<Window x:Class="Door_Lock.RemoveAcc"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Door_Lock"
+        mc:Ignorable="d"
+        Title="RemoveAcc" Height="100" Width="200"
+        ResizeMode="NoResize">
+    
+    <Grid>
+
+        <Label
+		Content="          ID"
+		HorizontalAlignment="Left"
+		Width="80"
+		Height="25"
+		VerticalAlignment="Top"
+		/>
+
+        <TextBox
+		x:Name="id"
+		HorizontalAlignment="Left"
+		Margin="5,25,0,0"
+		Width="75"
+		Height="19"
+		VerticalAlignment="Top"
+		/>
+
+        <Button
+		x:Name="RemoveAccount"
+		Content="Remove Account"
+		HorizontalAlignment="Left"
+		Margin="90,25,0,0"
+		Width="95"
+		Height="19"
+		VerticalAlignment="Top" Click="RemoveAccount_Click"
+		/>
+
+    </Grid>
+    
+</Window>

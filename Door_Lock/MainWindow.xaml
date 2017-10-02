@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         Title="Door Lock"
         Width="411"
-        Height="301" Loaded="main_Loaded">
+        Height="301" Loaded="main_Loaded"
+        ResizeMode="NoResize">
 
     
     <Grid Margin="0,0,2,-2">
