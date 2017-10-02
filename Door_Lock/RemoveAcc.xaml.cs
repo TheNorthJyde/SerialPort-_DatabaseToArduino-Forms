@@ -24,6 +24,7 @@ namespace Door_Lock
         database database = new database();
         private RemoveAcc()
         {
+
             InitializeComponent();
         }
         public RemoveAcc(SerialPort mySerialPort)
@@ -37,6 +38,9 @@ namespace Door_Lock
         }
         ~RemoveAcc()
         {
+            myserialPort.DiscardInBuffer();
+            myserialPort.DiscardOutBuffer();
+            
             myserialPort.DataReceived -= MySerialPort_DataReceived;
         }
         private void MySerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)

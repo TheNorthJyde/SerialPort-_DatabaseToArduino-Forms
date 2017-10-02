@@ -137,6 +137,8 @@ namespace SerialPort__DatabaseToArduino_Forms
 
         private void addUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            serialPort.DiscardInBuffer();
+            serialPort.DiscardOutBuffer();
             serialPort.DataReceived -= serialPort_DataReceived;
             addAccount addAccount = new addAccount(serialPort);
             addAccount.StartPosition = FormStartPosition.CenterParent;
@@ -147,6 +149,8 @@ namespace SerialPort__DatabaseToArduino_Forms
 
         private void removeUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            serialPort.DiscardInBuffer();
+            serialPort.DiscardOutBuffer();
             serialPort.DataReceived -= serialPort_DataReceived;
             removeAccount removeAccount = new removeAccount(serialPort);
             removeAccount.StartPosition = FormStartPosition.CenterParent;

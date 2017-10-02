@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO.Ports;
 using System.Windows.Threading;
-
+using MySql.Data.MySqlClient;
 
 namespace Door_Lock
 {
@@ -23,6 +23,8 @@ namespace Door_Lock
     /// </summary>
     public partial class MainWindow : Window
     {
+        MySqlConnection con = new MySqlConnection("host=localhost;user=root;database=rfid;");
+        MySqlCommand cmd;
         SerialPort serialPort;
         database db;
         public MainWindow()
@@ -55,11 +57,35 @@ namespace Door_Lock
                 data = data.Replace("\r", "");
                 Dispatcher.BeginInvoke((Action)(() => output.Items.Add("ID: " + data)));
                 serialPort.WriteLine("A");
+                try
+                {
+                    string sql = "INSERT INTO log (`ID`, `Initials`, `Dato & Time`, `Message`) VALUES ('" + data + "','" + Userinitials.initials + "','" + DateTime.UtcNow + "','Have open door')";
+                    cmd = new MySqlCommand(sql, con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             else
             {
                 Dispatcher.BeginInvoke((Action)(() => output.Items.Add("ID Not Authorized")));
                 serialPort.WriteLine("D");
+                try
+                {
+                    string sql = "INSERT INTO log (`ID`, `Initials`, `Dato & Time`, `Message`) VALUES ('" + data + "',' ','" + DateTime.UtcNow + "','Have tried to open door')";
+                    cmd = new MySqlCommand(sql, con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             
             

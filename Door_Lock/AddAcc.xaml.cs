@@ -40,6 +40,8 @@ namespace Door_Lock
         }
         ~AddAcc()
         {
+            myserialPort.DiscardInBuffer();
+            myserialPort.DiscardOutBuffer();
             myserialPort.DataReceived -= MySerialPort_DataReceived;
         }
 
