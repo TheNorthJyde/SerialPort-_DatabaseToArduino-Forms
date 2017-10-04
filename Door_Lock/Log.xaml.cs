@@ -21,7 +21,7 @@ namespace Door_Lock
     /// </summary>
     public partial class Log : Window
     {
-        MySqlConnection con = new MySqlConnection("host=localhost;user=root;database=rfid;");
+        MySqlConnection con = new MySqlConnection("host=10.11.42.216;user=rfiddoorlock;password=SbGvS9L8RdFZiNas;database=rfiddoorlock;");
         public Log()
         {
             InitializeComponent();

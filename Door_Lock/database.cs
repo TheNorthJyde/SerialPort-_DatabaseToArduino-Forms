@@ -12,7 +12,7 @@ namespace Door_Lock
     class database
     {
         //MySQL Connection
-        MySqlConnection con = new MySqlConnection("host=localhost;user=root;database=rfid;");
+        MySqlConnection con = new MySqlConnection("host=10.11.42.216;user=rfiddoorlock;password=SbGvS9L8RdFZiNas;database=rfiddoorlock;");
 
         //MySQL Command
         MySqlCommand cmd;

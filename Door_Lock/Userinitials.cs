@@ -13,7 +13,7 @@ namespace Door_Lock
         public static string initials { get; set; }
         public void Inital()
         {
-            MySqlConnection con = new MySqlConnection("host=localhost;user=root;database=rfid;");
+            MySqlConnection con = new MySqlConnection("host=10.11.42.216;user=rfiddoorlock;password=SbGvS9L8RdFZiNas;database=rfiddoorlock;");
             string id = RemoveID.TextToBring;
             string sql = "SELECT `First_name`, `Middle_name`, `Last_name` FROM `accounts` WHERE ID ='" + id + "'";
             MySqlDataAdapter adapter = new MySqlDataAdapter(sql, con);
