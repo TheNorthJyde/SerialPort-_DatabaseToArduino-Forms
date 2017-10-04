@@ -29,7 +29,7 @@ namespace Door_Lock
         MySqlDataAdapter adapter;
 
         //database
-        database database = new database();
+        extra database = new extra();
 
         string query;
         string id;
@@ -37,13 +37,13 @@ namespace Door_Lock
         public RemoveAccWarning()
         {
             InitializeComponent();
-            id = RemoveID.TextToBring;
+            id = extra.TextToBring;
             text();
         }
 
         void text()
         {
-            Userinitials userinitials = new Userinitials();
+            extra userinitials = new extra();
             userinitials.Inital();
             try
             {
@@ -52,7 +52,7 @@ namespace Door_Lock
                 DataSet DS = new DataSet();
                 adapter.Fill(DS);
                 accountInfo.Content = DS.Tables[0].Rows[0][0].ToString() + " " + DS.Tables[0].Rows[0][1].ToString() + " " + DS.Tables[0].Rows[0][2].ToString();
-                Initials.Content = Userinitials.initials;
+                Initials.Content = extra.initials;
             }
             catch (Exception ex)
             {
@@ -80,7 +80,7 @@ namespace Door_Lock
 
                 //Closes the connection to the database
                 con.Close();
-                string sql = "INSERT INTO log (`ID`, `Initials`, `Dato & Time`, `Message`) VALUES ('" + id + "','" + Userinitials.initials + "','" + DateTime.UtcNow + "','Have been Removed')";
+                string sql = "INSERT INTO log (`ID`, `Initials`, `Dato & Time`, `Message`) VALUES ('" + id + "','" + extra.initials + "','" + DateTime.UtcNow + "','Have been Removed')";
                 cmd = new MySqlCommand(sql, con);
                 con.Open();
                 cmd.ExecuteNonQuery();

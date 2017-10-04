@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Door_Lock"
         mc:Ignorable="d"
-        Title="RemoveAcc" Height="100" Width="200"
+        Title="Remove Account" Height="100" Width="206.725"
         ResizeMode="NoResize">
     
     <Grid>

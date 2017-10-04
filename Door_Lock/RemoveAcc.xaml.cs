@@ -22,7 +22,7 @@ namespace Door_Lock
     {
         SerialPort myserialPort;
 
-        database database = new database();
+        extra database = new extra();
 
         private RemoveAcc()
         {
@@ -65,7 +65,7 @@ namespace Door_Lock
         {
             if (database.checkID(id.Text))
             {
-                RemoveID.TextToBring = id.Text;
+                extra.TextToBring = id.Text;
                 RemoveAccWarning warning = new RemoveAccWarning();
                 warning.Owner = this;
                 warning.WindowStartupLocation = WindowStartupLocation.CenterOwner;

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Door_Lock"
         mc:Ignorable="d"
-        Title="AddAcc" Height="120" Width="368"
+        Title="Add Account" Height="120" Width="368"
         ResizeMode="NoResize">
     
     <Grid>

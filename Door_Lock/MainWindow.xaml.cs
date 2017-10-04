@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using System.IO.Ports;
 using System.Windows.Threading;
 using MySql.Data.MySqlClient;
+using System.Threading;
+using System.ComponentModel;
 
 namespace Door_Lock
 {
@@ -26,12 +28,12 @@ namespace Door_Lock
         MySqlConnection con = new MySqlConnection("host=10.11.42.216;user=rfiddoorlock;password=SbGvS9L8RdFZiNas;database=rfiddoorlock;");
         MySqlCommand cmd;
         SerialPort serialPort;
-        database db;
-
+        extra db;
+        
         public MainWindow()
         {
             InitializeComponent();
-            db = new database();
+            db = new extra();
             
             comPorts.Items.Add("Select a COMPort");            
             output.Items.Add("Select a COM port and Connect");
@@ -59,7 +61,7 @@ namespace Door_Lock
                 serialPort.WriteLine("A");
                 try
                 {
-                    string sql = "INSERT INTO log (`ID`, `Initials`, `Dato & Time`, `Message`) VALUES ('" + data + "','" + Userinitials.initials + "','" + DateTime.UtcNow + "','Have open door')";
+                    string sql = "INSERT INTO log (`ID`, `Initials`, `Dato & Time`, `Message`) VALUES ('" + data + "','" + extra.initials + "','" + DateTime.UtcNow + "','Have open door')";
                     cmd = new MySqlCommand(sql, con);
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -69,7 +71,7 @@ namespace Door_Lock
                 {
                     MessageBox.Show(ex.Message);
                 }
-            }
+            }            
             else
             {
                 Dispatcher.BeginInvoke((Action)(() => output.Items.Add("ID Not Authorized")));
@@ -146,7 +148,9 @@ namespace Door_Lock
             {
                 serialPort.Close();
                 connect.Content = "Connect";
+                output.Items.Clear();
                 output.Items.Add("Disconnected");
+                output.Items.Add("Select a COM port and Connect");
                 clear.IsEnabled = false;
                 dropdown.IsEnabled = false;
             }
