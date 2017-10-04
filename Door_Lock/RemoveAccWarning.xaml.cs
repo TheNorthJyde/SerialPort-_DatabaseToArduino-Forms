@@ -26,11 +26,10 @@ namespace Door_Lock
         //This handles the connection and the query
         MySqlCommand cmd;
 
+        MySqlDataAdapter adapter;
+
         //database
         database database = new database();
-
-
-        MySqlDataAdapter adapter;
 
         string query;
         string id;
@@ -41,6 +40,7 @@ namespace Door_Lock
             id = RemoveID.TextToBring;
             text();
         }
+
         void text()
         {
             Userinitials userinitials = new Userinitials();

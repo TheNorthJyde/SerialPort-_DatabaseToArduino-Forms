@@ -22,11 +22,13 @@ namespace Door_Lock
     public partial class Log : Window
     {
         MySqlConnection con = new MySqlConnection("host=10.11.42.216;user=rfiddoorlock;password=SbGvS9L8RdFZiNas;database=rfiddoorlock;");
+
         public Log()
         {
             InitializeComponent();
             datalog();
         }
+
         void datalog()
         {
             string query = "SELECT * FROM log";
@@ -45,7 +47,6 @@ namespace Door_Lock
         {
             try
             {
-
                 MySqlCommand cmd;
                 string query = "Delete FROM log";
                 cmd = new MySqlCommand(query, con);
@@ -64,7 +65,5 @@ namespace Door_Lock
             }
             datalog();
         }
-
-        
     }
 }

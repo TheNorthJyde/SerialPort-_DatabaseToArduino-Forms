@@ -27,6 +27,7 @@ namespace Door_Lock
         MySqlCommand cmd;
         SerialPort serialPort;
         database db;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -36,12 +37,10 @@ namespace Door_Lock
             output.Items.Add("Select a COM port and Connect");
 
             clear.IsEnabled = false;
-            dropdown.IsEnabled = false;
-            
+            dropdown.IsEnabled = false;            
 
             serialPort = new SerialPort();
-            serialPort.DataReceived += new SerialDataReceivedEventHandler(serialPort_DataReceived);
-                        
+            serialPort.DataReceived += new SerialDataReceivedEventHandler(serialPort_DataReceived);                        
         }
 
         ~MainWindow()
@@ -49,6 +48,7 @@ namespace Door_Lock
             serialPort.DataReceived -= new SerialDataReceivedEventHandler(serialPort_DataReceived);
             serialPort.Close();
         }
+
         private void serialPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {            
             string data = serialPort.ReadLine();
@@ -87,8 +87,6 @@ namespace Door_Lock
                     MessageBox.Show(ex.Message);
                 }
             }
-            
-            
         }
         
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -123,7 +121,6 @@ namespace Door_Lock
         {
             output.Items.Clear();
             output.Items.Add("Connected to " + serialPort.PortName);
-
         }
 
         private void showLog_Click(object sender, RoutedEventArgs e)
@@ -152,7 +149,6 @@ namespace Door_Lock
                 output.Items.Add("Disconnected");
                 clear.IsEnabled = false;
                 dropdown.IsEnabled = false;
-
             }
             else
             {
@@ -171,14 +167,12 @@ namespace Door_Lock
                     output.Items.Add("Connected to " + serialPort.PortName);
                     clear.IsEnabled = true;
                     dropdown.IsEnabled = true;
-
                 }
                 catch (Exception exc)
                 {
                     MessageBox.Show(exc.Message);
                 }
             }
-
         }
 
         private void main_Loaded(object sender, RoutedEventArgs e)
@@ -190,9 +184,7 @@ namespace Door_Lock
             {
                 comPorts.Items.Add(ports[i]);
                 i++;
-            }
-            
-        }        
-        
+            }            
+        }
     }
 }

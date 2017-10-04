@@ -24,10 +24,12 @@ namespace Door_Lock
     public partial class AddAcc : Window
     {
         SerialPort myserialPort;
+
         private AddAcc()
         {
             InitializeComponent();
         }
+
         public AddAcc(SerialPort mySerialPort)
         {
             
@@ -38,10 +40,12 @@ namespace Door_Lock
             mySerialPort.DiscardOutBuffer();
             id.IsReadOnly = true;
         }
+
         ~AddAcc()
         {
-            myserialPort.DiscardInBuffer();
-            myserialPort.DiscardOutBuffer();
+            //myserialPort.DiscardInBuffer();
+            //myserialPort.DiscardOutBuffer();
+
             myserialPort.DataReceived -= MySerialPort_DataReceived;
         }
 

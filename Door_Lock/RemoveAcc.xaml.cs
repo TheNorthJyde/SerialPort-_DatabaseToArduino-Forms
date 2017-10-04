@@ -21,12 +21,15 @@ namespace Door_Lock
     public partial class RemoveAcc : Window
     {
         SerialPort myserialPort;
+
         database database = new database();
+
         private RemoveAcc()
         {
 
             InitializeComponent();
         }
+
         public RemoveAcc(SerialPort mySerialPort)
         {
             InitializeComponent();
@@ -36,13 +39,15 @@ namespace Door_Lock
             mySerialPort.DiscardOutBuffer();
             id.IsReadOnly = true;
         }
+
         ~RemoveAcc()
         {
-            myserialPort.DiscardInBuffer();
-            myserialPort.DiscardOutBuffer();
+            //myserialPort.DiscardInBuffer();
+            //myserialPort.DiscardOutBuffer();
             
             myserialPort.DataReceived -= MySerialPort_DataReceived;
         }
+
         private void MySerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             try
@@ -55,7 +60,6 @@ namespace Door_Lock
                 MessageBox.Show(ex.Message);
             }
         }
-
 
         private void RemoveAccount_Click(object sender, RoutedEventArgs e)
         {

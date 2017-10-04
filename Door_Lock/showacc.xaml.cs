@@ -34,8 +34,6 @@ namespace Door_Lock
             log1.ItemsSource = ds.Tables[0].DefaultView;
         }
 
-        
-
         private void ok_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
