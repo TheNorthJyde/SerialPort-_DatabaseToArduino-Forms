@@ -50,8 +50,11 @@ namespace Door_Lock
             string data = serialPort.ReadLine();
             if (db.checkID(data))
             {
-                data = data.Replace("\r", "");
-                Dispatcher.BeginInvoke((Action)(() => output.Items.Add("ID: " + data)));
+                extra.TextToBring = data;
+                data = data.Replace("\r", "");                
+                extra init = new extra();
+                init.Inital();
+                Dispatcher.BeginInvoke((Action)(() => output.Items.Add("ID: " + data + " Initials: " + extra.initials)));
                 serialPort.WriteLine("A");
                 try
                 {
