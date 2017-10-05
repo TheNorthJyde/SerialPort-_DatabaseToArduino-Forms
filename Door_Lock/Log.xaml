@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Door_Lock"
         mc:Ignorable="d"
-        Title="Log" Height="533" Width="800">
+        Title="Log" Height="533" Width="487">
     
-    <Grid>
+    <Grid HorizontalAlignment="Left" Width="490">
 
         <DataGrid x:Name="log1"
-		Width="685"
+		Width="463"
 		Height="445"
 		Margin="10,10,0,0"
 		VerticalAlignment="Top"
@@ -21,22 +21,22 @@
 	x:Name="ok"
 	Content="Ok"
 	Height="31"
-	Margin="700,423,10,0"
+	Margin="96,460,0,0"
 	VerticalAlignment="Top"
 	VerticalContentAlignment="Center"
 	HorizontalContentAlignment="Center"
-	Padding="2" Click="ok_Click"
+	Padding="2" Click="ok_Click" Width="81" HorizontalAlignment="Left"
 	/>
 
         <Button
 	x:Name="clearLog"
 	Content="Clear Log"
 	Height="31"
-	Margin="10,460,703,0"
+	Margin="10,460,0,0"
 	VerticalAlignment="Top"
 	VerticalContentAlignment="Center"
 	HorizontalContentAlignment="Center"
-	Padding="2" Click="clearLog_Click"
+	Padding="2" Click="clearLog_Click" HorizontalAlignment="Left" Width="81"
 	/>
 
     </Grid>

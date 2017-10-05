@@ -150,6 +150,7 @@ namespace Door_Lock
                 output.Items.Add("Select a COM port and Connect");
                 clear.IsEnabled = false;
                 dropdown.IsEnabled = false;
+                comPorts.IsEnabled = true;
             }
             else
             {
@@ -168,6 +169,7 @@ namespace Door_Lock
                     output.Items.Add("Connected to " + serialPort.PortName);
                     clear.IsEnabled = true;
                     dropdown.IsEnabled = true;
+                    comPorts.IsEnabled = false;
                 }
                 catch (Exception exc)
                 {

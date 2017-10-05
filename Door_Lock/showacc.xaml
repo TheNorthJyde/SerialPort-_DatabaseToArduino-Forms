@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Door_Lock"
         mc:Ignorable="d"
-        Title="Show account" Height="500" Width="800">
-    <Grid>
+        Title="Show account" Height="500" Width="588.5">
+    <Grid HorizontalAlignment="Left" Width="578">
 
         <DataGrid x:Name="log1"
-		Width="685"
+		Width="463"
 		Height="445"
 		Margin="10,10,0,0"
 		VerticalAlignment="Top"
@@ -20,7 +20,7 @@
 		x:Name="ok"
 		Content="Ok"
 		Height="31"
-		Margin="710,423,0,0"
+		Margin="492,424,0,0"
 		VerticalAlignment="Top"
 		VerticalContentAlignment="Center"
 		HorizontalContentAlignment="Center"
