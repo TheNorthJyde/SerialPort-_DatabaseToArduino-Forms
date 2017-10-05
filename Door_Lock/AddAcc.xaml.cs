@@ -39,15 +39,7 @@ namespace Door_Lock
             myserialPort.DiscardInBuffer();
             mySerialPort.DiscardOutBuffer();
             id.IsReadOnly = true;
-        }
-
-        ~AddAcc()
-        {
-            //myserialPort.DiscardInBuffer();
-            //myserialPort.DiscardOutBuffer();
-
-            myserialPort.DataReceived -= MySerialPort_DataReceived;
-        }
+        }        
 
         private void MySerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
@@ -98,6 +90,7 @@ namespace Door_Lock
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
+                    myserialPort.DataReceived -= MySerialPort_DataReceived;
                     this.Close();
                 }
                 else
@@ -126,6 +119,11 @@ namespace Door_Lock
             middle_name.Text = "";
             last_name.Text = "";
             id.Text = "";            
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            myserialPort.DataReceived -= MySerialPort_DataReceived;
         }
     }
 }

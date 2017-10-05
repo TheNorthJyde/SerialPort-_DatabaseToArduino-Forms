@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Door_Lock"
         mc:Ignorable="d"
         Title="Remove Account" Height="100" Width="206.725"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize" Closing="Window_Closing">
     
     <Grid>
 

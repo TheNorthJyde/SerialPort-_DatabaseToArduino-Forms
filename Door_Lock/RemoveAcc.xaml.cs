@@ -40,14 +40,6 @@ namespace Door_Lock
             id.IsReadOnly = true;
         }
 
-        ~RemoveAcc()
-        {
-            //myserialPort.DiscardInBuffer();
-            //myserialPort.DiscardOutBuffer();
-            
-            myserialPort.DataReceived -= MySerialPort_DataReceived;
-        }
-
         private void MySerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             try
@@ -70,6 +62,7 @@ namespace Door_Lock
                 warning.Owner = this;
                 warning.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                 warning.ShowDialog();
+                myserialPort.DataReceived -= MySerialPort_DataReceived;
                 this.Close();
             }
             else
@@ -77,6 +70,11 @@ namespace Door_Lock
                 MessageBox.Show("This ID: " + id.Text + " is never used");
                 id.Text = "";
             }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            myserialPort.DataReceived -= MySerialPort_DataReceived;
         }
     }
 }

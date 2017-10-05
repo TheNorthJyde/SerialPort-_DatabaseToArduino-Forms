@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Door_Lock"
         mc:Ignorable="d"
         Title="Add Account" Height="120" Width="368"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize" Closing="Window_Closing">
     
     <Grid>
 

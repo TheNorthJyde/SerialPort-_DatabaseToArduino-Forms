@@ -45,12 +45,6 @@ namespace Door_Lock
             serialPort.DataReceived += new SerialDataReceivedEventHandler(serialPort_DataReceived);                        
         }
 
-        ~MainWindow()
-        {
-            serialPort.DataReceived -= new SerialDataReceivedEventHandler(serialPort_DataReceived);
-            serialPort.Close();
-        }
-
         private void serialPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {            
             string data = serialPort.ReadLine();
@@ -163,7 +157,7 @@ namespace Door_Lock
                     serialPort.Parity = Parity.None;
                     serialPort.StopBits = StopBits.One;
                     serialPort.DataBits = 8;
-                    serialPort.Handshake = Handshake.None;                    
+                    serialPort.Handshake = Handshake.None;
                     serialPort.Open();
 
                     connect.Content = "Disconnect";
