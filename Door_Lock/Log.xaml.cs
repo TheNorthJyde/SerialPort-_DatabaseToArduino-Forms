@@ -45,25 +45,30 @@ namespace Door_Lock
 
         private void clearLog_Click(object sender, RoutedEventArgs e)
         {
-            try
+            //MessageBox.Show("Are you sure you want to clear the log?", "Question", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if(MessageBox.Show("Are you sure you want to clear the log?", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK)
             {
-                MySqlCommand cmd;
-                string query = "Delete FROM log";
-                cmd = new MySqlCommand(query, con);
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
-                string sql = "INSERT INTO log (`Initials`, `Dato & Time`, `Message`) VALUES ('ADMIN','" + DateTime.UtcNow + "','Have been Cleared')";
-                cmd = new MySqlCommand(sql, con);
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
+                try
+                {
+                    MySqlCommand cmd;
+                    string query = "Delete FROM log";
+                    cmd = new MySqlCommand(query, con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    string sql = "INSERT INTO log (`Initials`, `Dato & Time`, `Message`) VALUES ('ADMIN','" + DateTime.UtcNow + "','Have been Cleared')";
+                    cmd = new MySqlCommand(sql, con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                datalog();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            datalog();
+            
         }
     }
 }
