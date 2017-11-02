@@ -10,7 +10,7 @@ namespace Door_Lock
 {
     class extra
     {
-        MySqlConnection con = new MySqlConnection("host=10.11.42.216;user=rfiddoorlock;password=SbGvS9L8RdFZiNas;database=rfiddoorlock;");
+        MySqlConnection con;
 
         //MySQL Command
         MySqlCommand cmd;
@@ -19,9 +19,13 @@ namespace Door_Lock
 
         public static string initials { get; set; }
         public static string TextToBring { get; set; }
+        public static string SqlServer { get; set; }
+
+        
 
         public void Inital()
-        {            
+        {
+            con = new MySqlConnection(SqlServer);
             string id = extra.TextToBring;
             string sql = "SELECT `First_name`, `Middle_name`, `Last_name` FROM `accounts` WHERE ID ='" + id + "'";
             MySqlDataAdapter adapter = new MySqlDataAdapter(sql, con);
@@ -39,25 +43,33 @@ namespace Door_Lock
         /// </summary>
         public bool checkID(string id)
         {
-            bool result = false;
-
-            string sql = "SELECT * FROM accounts WHERE ID = '" + id + "'";
-
-            cmd = new MySqlCommand(sql, con);
-
-            //Opens the connection to the SQL database
-            con.Open();
-
-            reader = cmd.ExecuteReader();
-
-            if (reader.Read())
+            con = new MySqlConnection(SqlServer);
+            try
             {
-                result = true;
+                bool result = false;
+
+                string sql = "SELECT * FROM accounts WHERE ID = '" + id + "'";
+
+                cmd = new MySqlCommand(sql, con);
+
+                //Opens the connection to the SQL database
+                con.Open();
+
+                reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    result = true;
+                }
+
+                con.Close();
+
+                return result;
             }
-
-            con.Close();
-
-            return result;
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

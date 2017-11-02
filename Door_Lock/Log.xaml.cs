@@ -21,16 +21,19 @@ namespace Door_Lock
     /// </summary>
     public partial class Log : Window
     {
-        MySqlConnection con = new MySqlConnection("host=10.11.42.216;user=rfiddoorlock;password=SbGvS9L8RdFZiNas;database=rfiddoorlock;");
+        //MySqlConnection con = new MySqlConnection("host=10.11.42.216;user=rfiddoorlock;password=SbGvS9L8RdFZiNas;database=rfiddoorlock;");
+        MySqlConnection con;
 
         public Log()
         {
             InitializeComponent();
             datalog();
+            
         }
 
         void datalog()
         {
+            con = new MySqlConnection(extra.SqlServer);
             string query = "SELECT * FROM log";
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, con);
             DataSet ds = new DataSet();

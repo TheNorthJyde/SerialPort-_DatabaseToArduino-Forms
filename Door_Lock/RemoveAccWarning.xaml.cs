@@ -21,7 +21,7 @@ namespace Door_Lock
     /// </summary>
     public partial class RemoveAccWarning : Window
     {
-        MySqlConnection con = new MySqlConnection("host=10.11.42.216;user=rfiddoorlock;password=SbGvS9L8RdFZiNas;database=rfiddoorlock;");
+        MySqlConnection con;
 
         //This handles the connection and the query
         MySqlCommand cmd;
@@ -43,6 +43,7 @@ namespace Door_Lock
 
         void text()
         {
+            con = new MySqlConnection(extra.SqlServer);
             extra userinitials = new extra();
             userinitials.Inital();
             try
@@ -62,6 +63,7 @@ namespace Door_Lock
 
         private void removeAcc_Click(object sender, RoutedEventArgs e)
         {
+            con = new MySqlConnection(extra.SqlServer);
             try
             {
                 // this is the command

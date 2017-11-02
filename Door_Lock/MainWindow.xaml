@@ -76,7 +76,15 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Width="369"
-            Height="148" IsSynchronizedWithCurrentItem="False" SelectedIndex="0" IsEnabled="False"
+            Height="148" IsSynchronizedWithCurrentItem="False" SelectedIndex="0"
+            />
+        <ComboBox
+            x:Name="Hosts"
+            Margin="150,200,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Width="140"
+            SelectedIndex="0"
             />
 
     </Grid>

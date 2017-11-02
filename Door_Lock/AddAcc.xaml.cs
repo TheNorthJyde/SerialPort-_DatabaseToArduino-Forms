@@ -56,7 +56,8 @@ namespace Door_Lock
 
         private void AddAccount_Click(object sender, RoutedEventArgs e)
         {
-            MySqlConnection con = new MySqlConnection("host=10.11.42.216;user=rfiddoorlock;password=SbGvS9L8RdFZiNas;database=rfiddoorlock;");
+            //MySqlConnection con = new MySqlConnection("host=10.11.42.216;user=rfiddoorlock;password=SbGvS9L8RdFZiNas;database=rfiddoorlock;");
+            MySqlConnection con = new MySqlConnection(extra.SqlServer);
             try
             {
                 string checkCuery = "SELECT * FROM accounts WHERE ID = '" + id.Text + "'";

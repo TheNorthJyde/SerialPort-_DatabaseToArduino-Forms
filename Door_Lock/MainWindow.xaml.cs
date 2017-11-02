@@ -25,10 +25,12 @@ namespace Door_Lock
     /// </summary>
     public partial class MainWindow : Window
     {
-        MySqlConnection con = new MySqlConnection("host=10.11.42.216;user=rfiddoorlock;password=SbGvS9L8RdFZiNas;database=rfiddoorlock;");
+        //MySqlConnection con = new MySqlConnection("host=10.11.42.216;user=rfiddoorlock;password=SbGvS9L8RdFZiNas;database=rfiddoorlock;");
+        MySqlConnection con;
         MySqlCommand cmd;
         SerialPort serialPort;
         extra db;
+        
         
         public MainWindow()
         {
@@ -37,6 +39,9 @@ namespace Door_Lock
             
             comPorts.Items.Add("Select a COMPort");            
             output.Items.Add("Select a COM port and Connect");
+            Hosts.Items.Add("Select Host");
+            Hosts.Items.Add("Server");
+            Hosts.Items.Add("Local Host");
 
             clear.IsEnabled = false;
             dropdown.IsEnabled = false;            
@@ -151,6 +156,7 @@ namespace Door_Lock
                 clear.IsEnabled = false;
                 dropdown.IsEnabled = false;
                 comPorts.IsEnabled = true;
+                Hosts.IsEnabled = true;
             }
             else
             {
@@ -164,16 +170,38 @@ namespace Door_Lock
                     serialPort.Handshake = Handshake.None;
                     serialPort.Open();
 
-                    connect.Content = "Disconnect";
-                    output.Items.Clear();
-                    output.Items.Add("Connected to " + serialPort.PortName);
-                    clear.IsEnabled = true;
-                    dropdown.IsEnabled = true;
-                    comPorts.IsEnabled = false;
+                    if (Hosts.SelectedIndex == 1)
+                    {
+                        extra.SqlServer = "host=10.11.42.216;user=rfiddoorlock;password=SbGvS9L8RdFZiNas;database=rfiddoorlock;";
+                        Hosts.IsEnabled = false;
+                        con = new MySqlConnection(extra.SqlServer);
+                    }
+                    else if (Hosts.SelectedIndex == 2)
+                    {
+                        extra.SqlServer = "host=localhost;user=root;database=rfid;";
+                        Hosts.IsEnabled = false;
+                        con = new MySqlConnection(extra.SqlServer);
+                    }
+
+                    if (serialPort.IsOpen == false || Hosts.SelectedIndex == 0)
+                    {
+                        serialPort.Close();
+                        output.Items.Add("Error 404: Comport or Host Not Found");
+                    }
+                    else
+                    {
+                        connect.Content = "Disconnect";
+                        output.Items.Clear();
+                        output.Items.Add("Connected to " + serialPort.PortName);
+                        clear.IsEnabled = true;
+                        dropdown.IsEnabled = true;
+                        comPorts.IsEnabled = false;
+                    }
+                    
                 }
-                catch (Exception exc)
+                catch (Exception)
                 {
-                    MessageBox.Show(exc.Message);
+                    output.Items.Add("Error 404: Comport or Host Not Found");
                 }
             }
         }

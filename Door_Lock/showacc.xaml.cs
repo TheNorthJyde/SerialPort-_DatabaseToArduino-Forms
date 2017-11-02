@@ -24,7 +24,7 @@ namespace Door_Lock
         public showacc()
         {
             InitializeComponent();
-            MySqlConnection con = new MySqlConnection("host=10.11.42.216;user=rfiddoorlock;password=SbGvS9L8RdFZiNas;database=rfiddoorlock;");
+            MySqlConnection con = new MySqlConnection(extra.SqlServer);
             string query = "SELECT * FROM accounts";
 
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, con);
